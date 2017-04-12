@@ -85,7 +85,7 @@ func (t *Car) submitCar(stub shim.ChaincodeStubInterface, args []string) ([]byte
 		if err != nil {
 			return nil, err 
 		}
-		return nil, nil
+		return nil, ok
 
 }
 
