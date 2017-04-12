@@ -119,10 +119,14 @@ func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byt
 	
 	res2E := Car{}
 	
-	res2E.vinId = row.Columns[0].GetString_()
+	res2E.vinId = "2000"
+	res2E.make = "cars"
+	res2E.model = "city"
+	
+	/*res2E.vinId = row.Columns[0].GetString_()
 	res2E.make = row.Columns[1].GetString_()
 	res2E.model = row.Columns[2].GetString_()
-
+*/
 	mapB, _ := json.Marshal(res2E)
 	fmt.Println("mapB")
     fmt.Println(string(mapB))
