@@ -131,7 +131,7 @@ func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byt
 	fmt.Println("mapB")
     fmt.Println(string(mapB))
 	
-	return mapB
+	return mapB, nil
 
 }
 
