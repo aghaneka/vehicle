@@ -74,7 +74,7 @@ func (t *VEHICLE) submitCar(stub shim.ChaincodeStubInterface, args []string) ([]
 		model:=args[2]
 	
 		// Insert a row
-		err := stub.InsertRow("Cars", shim.Row{
+		ok, err := stub.InsertRow("Cars", shim.Row{
 			Columns: []*shim.Column{
 				&shim.Column{Value: &shim.Column_String_{String_: vinId}},
 				&shim.Column{Value: &shim.Column_String_{String_: make}},
@@ -85,7 +85,9 @@ func (t *VEHICLE) submitCar(stub shim.ChaincodeStubInterface, args []string) ([]
 		if err != nil {
 			return nil, err 
 		}
-		return nil, nil
+		if !ok && err == nil {
+			return nil, errors.New("Row already exists.")
+		}
 
 }
 
