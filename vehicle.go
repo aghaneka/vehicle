@@ -94,7 +94,7 @@ func (t *VEHICLE) submitCar(stub shim.ChaincodeStubInterface, args []string) ([]
 
 //get the application(depends on the role)
 func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-
+    fmt.Println("get car called")
 	vinId := args[0]
 	
 	var columns []shim.Column
@@ -103,12 +103,14 @@ func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byt
 
 	row, err := stub.GetRow("Cars", columns)
 	if err != nil {
+	    fmt.Println("get car erroe")
 		jsonResp := "{\"Error\":\"Failed to get the data for the vinId " + vinId + "\"}"
 		return nil, errors.New(jsonResp)
 	}
 
 	// GetRows returns empty message if key does not exist
 	if len(row.Columns) == 0 {
+	    fmt.Println("get car empty")
 		jsonResp := "{\"Error\":\"Failed to get the data for the vinId " + vinId + "\"}"
 		return nil, errors.New(jsonResp)
 	}
@@ -122,6 +124,7 @@ func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byt
 	res2E.model = row.Columns[2].GetString_()
 
 	mapB, _ := json.Marshal(res2E)
+	fmt.Println("mapB")
     fmt.Println(string(mapB))
 	
 	return mapB, nil
