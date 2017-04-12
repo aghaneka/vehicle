@@ -66,7 +66,7 @@ func (t *VEHICLE) Init(stub shim.ChaincodeStubInterface, function string, args [
 
 //============================================Quote=============================================//
 
-func (t *Car) submitCar(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *VEHICLE) submitCar(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 
 	
 		vinId:=args[0]
@@ -91,7 +91,7 @@ func (t *Car) submitCar(stub shim.ChaincodeStubInterface, args []string) ([]byte
 
 
 //get the application(depends on the role)
-func (t *Car) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 
 	vinId := args[0]
 	
