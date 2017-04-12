@@ -17,7 +17,7 @@ type VEHICLE struct {
 // Application is for storing retreived Application
 
 type Car struct{	
-	vin string `json:"vinId"`
+	vinId string `json:"vinId"`
 	make string `json:"make"`
 	model string `json:"model"`
 }
@@ -25,7 +25,7 @@ type Car struct{
 // ListApplication is for storing retreived Application list with status
 
 type ListCars struct{	
-	vin string `json:"vinId"`
+	vinId string `json:"vinId"`
 	make string `json:"make"`
 	model string `json:"model"`
 }
