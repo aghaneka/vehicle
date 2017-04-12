@@ -96,7 +96,7 @@ func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byt
 	vinId := args[0]
 	
 	var columns []shim.Column
-	col1 := shim.Column{Value: &shim.Column_String_{String_: applicationId}}
+	col1 := shim.Column{Value: &shim.Column_String_{String_: vinId}}
 	columns = append(columns, col1)
 
 	row, err := stub.GetRow("Cars", columns)
