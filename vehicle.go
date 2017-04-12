@@ -130,7 +130,7 @@ func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byt
 func (t *VEHICLE) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 
 	if function == "submitCar" {
-		t := Car{}
+		t := VEHICLE{}
 		return t.submitCar(stub, args)
 	}  
 
@@ -141,7 +141,7 @@ func (t *VEHICLE) Invoke(stub shim.ChaincodeStubInterface, function string, args
 func (t *VEHICLE) Query(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 
 	if function == "getCar" {
-		t := Car{}
+		t := VEHICLE{}
 		return t.getCar(stub, args)		
 	}
 	
