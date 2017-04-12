@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/hyperledger/fabric/core/crypto/primitives"
 )
 
 type VEHICLE struct {
@@ -152,7 +151,6 @@ func (t *VEHICLE) Query(stub shim.ChaincodeStubInterface, function string, args 
 }
 
 func main() {
-	primitives.SetSecurityLevel("SHA3", 256)
 	err := shim.Start(new(VEHICLE))
 	if err != nil {
 		fmt.Printf("Error starting VEHICLE: %s", err)
