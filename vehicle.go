@@ -88,7 +88,8 @@ func (t *VEHICLE) submitCar(stub shim.ChaincodeStubInterface, args []string) ([]
 		if !ok && err == nil {
 			return nil, errors.New("Row already exists.")
 		}
-
+		
+		return nil, nil
 }
 
 
