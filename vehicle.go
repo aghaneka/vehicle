@@ -10,7 +10,7 @@ import (
 type VEHICLE struct {
 
 }
-
+ 
 
 
 // Application is for storing retreived Application
