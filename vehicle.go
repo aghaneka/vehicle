@@ -94,7 +94,7 @@ func (t *VEHICLE) submitCar(stub shim.ChaincodeStubInterface, args []string) ([]
 
 //get the application(depends on the role)
 func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-    fmt.Println("get car called")
+    fmt.Println("get car called NEW....")
 	vinId := args[0]
 	
 	var columns []shim.Column
