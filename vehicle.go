@@ -140,8 +140,7 @@ func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byt
 }
 
 func (t *VEHICLE) getAllCars(stub shim.ChaincodeStubInterface) ([]byte, error) {
-    vinId := args[0]
-	
+    	
 	var columns []shim.Column
 	
 	rows, err := stub.GetRows("Cars", columns)
