@@ -24,9 +24,9 @@ type Car struct{
 // ListApplication is for storing retreived Application list with status
 
 type ListCars struct{	
-	vinId string `json:"vinId"`
-	make string `json:"make"`
-	model string `json:"model"`
+	VinId string `json:"vinId"`
+	Make string `json:"make"`
+	Model string `json:"model"`
 }
 
 
@@ -120,9 +120,9 @@ func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byt
 	
 	res2E := Car{}
 	
-    res2E.vinId = row.Columns[0].GetString_()
-	res2E.make = row.Columns[1].GetString_()
-	res2E.model = row.Columns[2].GetString_()
+    res2E.VinId = row.Columns[0].GetString_()
+	res2E.Make = row.Columns[1].GetString_()
+	res2E.Model = row.Columns[2].GetString_()
 
     
     fmt.Println("row 1"+row.Columns[0].GetString_())
