@@ -105,14 +105,14 @@ func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byt
 	if err != nil {
 	    fmt.Println("get car erroe")
 		jsonResp := "{\"Error\":\"Failed to get the data for the vinId " + vinId + "\"}"
-		return nil, errors.New(jsonResp)
+		return 111, errors.New(jsonResp)
 	}
 
 	// GetRows returns empty message if key does not exist
 	if len(row.Columns) == 0 {
 	    fmt.Println("get car empty")
 		jsonResp := "{\"Error\":\"Failed to get the data for the vinId " + vinId + "\"}"
-		return nil, errors.New(jsonResp)
+		return 222, errors.New(jsonResp)
 	}
 
 	
