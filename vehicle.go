@@ -92,7 +92,6 @@ func (t *VEHICLE) submitCar(stub shim.ChaincodeStubInterface, args []string) ([]
 }
 
 
-//get the application(depends on the role)
 func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
     fmt.Println("get car called NEW...."+args[0])
 	vinId := args[0]
@@ -140,6 +139,50 @@ func (t *VEHICLE) getCar(stub shim.ChaincodeStubInterface, args []string) ([]byt
 
 }
 
+func (t *VEHICLE) getAllCars(stub shim.ChaincodeStubInterface) ([]byte, error) {
+    vinId := args[0]
+	
+	var columns []shim.Column
+	
+	rows, err := stub.GetRows("Cars", columns)
+	
+	
+	res2E := []*Car{}
+
+		for {
+			select {
+
+			case row, ok := <-rows:
+
+				if !ok {
+					rows = nil
+				} else {
+
+					u := new(Car)
+					u.VinId = row.Columns[0].GetString_()
+					u.Make = row.Columns[1].GetString_()
+					u.Model = row.Columns[2].GetString_()
+					res2E = append(res2E, u)
+				}
+			}
+			if rows == nil {
+				break
+			}
+		}
+
+		jsonRows, err := json.Marshal(res2E)
+
+		if err != nil {
+			return nil, fmt.Errorf("getcars operation failed. Error marshaling JSON: %s", err)
+		}
+
+		return jsonRows, nil	
+	
+}
+
+
+
+
 // Invoke invokes the chaincode
 func (t *VEHICLE) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 
@@ -158,6 +201,10 @@ func (t *VEHICLE) Query(stub shim.ChaincodeStubInterface, function string, args 
 		t := VEHICLE{}
 		return t.getCar(stub, args)		
 	}
+	if function == "getAllCars" {
+		t := VEHICLE{}
+		return t.getAllCars(stub)		
+	}	
 	
 	return nil, nil
 }
